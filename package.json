@@ -9,14 +9,20 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^7.0.0",
+    "@fortawesome/free-solid-svg-icons": "^7.0.0",
+    "@fortawesome/vue-fontawesome": "^3.1.1",
+    "lodash-es": "^4.17.21",
     "vue": "^3.5.18"
   },
   "devDependencies": {
+    "@types/lodash-es": "^4.17.12",
     "@vitejs/plugin-vue": "^6.0.1",
     "@vue/tsconfig": "^0.7.0",
     "postcss-each": "^1.1.0",
     "typescript": "~5.8.3",
     "vite": "^7.1.2",
+    "vitest": "^3.2.4",
     "vue-tsc": "^3.0.5"
   }
 }

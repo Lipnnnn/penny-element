@@ -12,6 +12,7 @@
       @click="handleClick"
     >
       <slot name="title">{{ title }}</slot>
+      <Icon icon="angle-right" class="header-angle" />
     </div>
 
     <Transition name="slide" v-on="transitionEvents" style="overflow: hidden;">
@@ -31,6 +32,7 @@
 import { computed, inject } from "vue";
 import type { NameType } from "./types";
 import { collapseContextKey } from "./types";
+import Icon from "../Icon/Icon.vue";
 
 const props = defineProps<{
   name: NameType;

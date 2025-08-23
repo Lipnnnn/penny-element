@@ -9,18 +9,24 @@
       'is-plain': plain,
       'is-round': round,
       'is-circle': circle,
+      'is-loading': loading,
     }"
-    :disabled="disabled"
+    :disabled="disabled || loading"
     :type="nativeType"
     :autofocus="autofocus"
   >
-    <slot></slot>
+    <Icon v-if="loading" icon="spinner" spin />
+    <Icon v-if="icon" :icon="icon" />
+    <span>
+      <slot></slot>
+    </span>
   </button>
 </template>
 
 <script setup lang="ts">
 import type { ButtonType, ButtonSize, NativeType } from "./types";
 import { ref } from "vue";
+import Icon from "../Icon/Icon.vue";
 
 withDefaults(
   defineProps<{
@@ -32,16 +38,17 @@ withDefaults(
     circle?: boolean;
     nativeType?: NativeType;
     autofocus?: boolean;
+    icon?: string;
+    loading?: boolean;
   }>(),
   {
     nativeType: "button",
   }
 );
 
-const _ref = ref<HTMLButtonElement>()
+const _ref = ref<HTMLButtonElement>();
 
 defineExpose({
-  ref: _ref
-})
+  ref: _ref,
+});
 </script>
-
