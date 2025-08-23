@@ -18,7 +18,9 @@
   "devDependencies": {
     "@types/lodash-es": "^4.17.12",
     "@vitejs/plugin-vue": "^6.0.1",
+    "@vue/test-utils": "^2.4.6",
     "@vue/tsconfig": "^0.7.0",
+    "jsdom": "^26.1.0",
     "postcss-each": "^1.1.0",
     "typescript": "~5.8.3",
     "vite": "^7.1.2",
