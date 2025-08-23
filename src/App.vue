@@ -1,9 +1,14 @@
 <script setup lang="ts">
 import Button from "./components/Button/Button.vue";
+import Collapse from "./components/Collapse/Collapse.vue";
+import CollapseItem from "./components/Collapse/CollapseItem.vue";
 import { onMounted, ref } from "vue";
+import type { NameType } from "./components/Collapse/types";
 import type { ButtonInstance } from "./components/Button/types";
 
 const buttonRef = ref<ButtonInstance>();
+
+const openedValue = ref<NameType[]>(['1']);
 
 onMounted(() => {
   console.log(buttonRef.value?.ref);
@@ -11,6 +16,7 @@ onMounted(() => {
 </script>
 
 <template>
+  <hr>
   <Button ref="buttonRef">Test Button</Button>
   <Button plain>Plain Button</Button>
   <Button round>Round Button</Button>
@@ -28,6 +34,33 @@ onMounted(() => {
   <Button type="danger" plain>Danger</Button><br /><br />
   <Button size="large">Large</Button>
   <Button size="small">Small</Button>
+  <hr>
+  <Collapse v-model="openedValue">
+    <CollapseItem name="1" title="Title 1">
+      Content 1
+    </CollapseItem>
+    <CollapseItem name="2">
+      <template #title>
+        Title 2
+      </template>
+      Content 2
+    </CollapseItem>
+    <CollapseItem name="3" disabled>
+      <template #title>
+        Title 3
+      </template>
+      Content 3
+      // 安装 svg core 
+npm i --save @fortawesome/fontawesome-svg-core
+
+// 安装图标库
+npm i --save @fortawesome/free-solid-svg-icons
+
+// 安装基于 vue3 的包装
+npm i --save @fortawesome/vue-fontawesome@latest-3
+
+    </CollapseItem>
+  </Collapse>
 </template>
 
 <style scoped>
