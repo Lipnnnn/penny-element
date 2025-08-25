@@ -1,0 +1,76 @@
+.vk-alert {
+  --vk-alert-text-color: var(--vk-text-color-regular);
+  --vk-alert-font-weight: var(--vk-font-weight-primary);
+  --vk-alert-bg-color: var(--vk-fill-color-blank);
+  --vk-alert-border-color: var(--vk-border-color);
+  --vk-alert-hover-text-color: var(--vk-color-primary);
+  --vk-alert-hover-border-color: var(--vk-color-primary-light-7);
+  --vk-alert-hover-bg-color: var(--vk-color-primary-light-9);
+  --vk-alert-active-text-color: var(--vk-alert-hover-text-color);
+  --vk-alert-active-border-color: var(--vk-color-primary);
+  --vk-alert-active-bg-color: var(--vk-alert-hover-bg-color);
+  --vk-alert-disabled-text-color: var(--vk-disabled-text-color);
+  --vk-alert-disabled-bg-color: var(--vk-fill-color-blank);
+  --vk-alert-disabled-border-color: var(--vk-border-color-light);
+  --vk-alert-outline-color: var(--vk-color-primary-light-5);
+  --vk-alert-active-color: var(--vk-text-color-primary);
+}
+
+.vk-alert {
+  display: inline-flex;
+  justify-content: flex-start;
+  align-items: center;
+  vertical-align: middle;
+  line-height: 1;
+  min-height: 40px;
+  width: 600px;
+  padding: 8px 16px;
+  box-sizing: border-box;
+  border-radius: var(--vk-border-radius-base);
+  color: var(--vk-alert-text-color);
+  transition: 0.1s;
+  font-weight: var(--vk-alert-font-weight);
+  background-color: var(--vk-alert-bg-color);
+  border: var(--vk-border);
+  border-color: var(--vk-alert-border-color);
+  font-size: var(--vk-font-size-base);
+  outline: none;
+  & + & {
+    margin-top: 12px;
+  }
+  &.is-plain {
+    --vk-alert-hover-text-color: var(--vk-color-primary);
+    --vk-alert-hover-bg-color: var(--vk-fill-color-blank);
+    --vk-alert-hover-border-color: var(--vk-color-primary);
+  }
+  [class*="vk-icon"] + span {
+    margin-left: 6px;
+  }
+}
+
+@each $val in primary, success, warning, info, danger {
+  .vk-alert--$(val) {
+    --vk-alert-text-color: var(--vk-color-white);
+    --vk-alert-bg-color: var(--vk-color-$(val));
+    --vk-alert-border-color: var(--vk-color-$(val));
+    --vk-alert-outline-color: var(--vk-color-$(val)-light-5);
+    --vk-alert-active-color: var(--vk-color-$(val)-dark-2);
+    --vk-alert-hover-text-color: var(--vk-color-white);
+    --vk-alert-hover-bg-color: var(--vk-color-$(val)-light-3);
+    --vk-alert-hover-border-color: var(--vk-color-$(val)-light-3);
+    --vk-alert-active-bg-color: var(--vk-color-$(val)-dark-2);
+    --vk-alert-active-border-color: var(--vk-color-$(val)-dark-2);
+    --vk-alert-disabled-text-color: var(--vk-color-white);
+    --vk-alert-disabled-bg-color: var(--vk-color-$(val)-light-5);
+    --vk-button-disabled-border-color: var(--vk-color-$(val)-light-5);
+  }
+  .vk-alert--$(val).is-plain {
+    --vk-alert-text-color: var(--vk-color-$(val));
+    --vk-alert-bg-color: var(--vk-color-$(val)-light-9);
+    --vk-alert-border-color: var(--vk-color-$(val)-light-5);
+    --vk-alert-hover-text-color: var(--vk-color-white);
+    --vk-alert-hover-bg-color: var(--vk-color-$(val));
+    --vk-alert-hover-border-color: var(--vk-color-$(val));
+    --vk-alert-active-text-color: var(--vk-color-white);
+  }
+}

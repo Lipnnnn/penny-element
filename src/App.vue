@@ -2,6 +2,7 @@
 import Button from "./components/Button/Button.vue";
 import Collapse from "./components/Collapse/Collapse.vue";
 import CollapseItem from "./components/Collapse/CollapseItem.vue";
+import Alert from "./components/Alert/Alert.vue";
 import Icon from "./components/Icon/Icon.vue";
 import { onMounted, ref } from "vue";
 import type { NameType } from "./components/Collapse/types";
@@ -52,6 +53,14 @@ onMounted(() => {
   <hr />
   <Icon icon="fa-solid fa-house" type="primary" color="black" />
   <Icon icon="fa-solid fa-user-secret" type="danger" />
+  <hr />
+  <Alert type="danger" center show-icon />
+  <Alert type="primary" show-icon />
+  <Alert type="success" show-icon />
+  <Alert type="info" show-icon />
+  <Alert content="223" type="warning" show-icon center />
+  <hr />
+  
 </template>
 
 <style scoped>
