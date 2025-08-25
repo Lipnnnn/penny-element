@@ -20,21 +20,27 @@ const emits = defineEmits<{
 }>();
 
 const activeNames = ref<NameType[]>(props.modelValue);
-watch(() => props.modelValue, (newVal) => {
-  activeNames.value = newVal;
-})
+watch(
+  () => props.modelValue,
+  (newVal) => {
+    activeNames.value = newVal;
+  }
+);
 const handleItemClick = (item: NameType) => {
-  const index = activeNames.value.indexOf(item);
+  let _activeNames = [...activeNames.value];
   if (props.accordion) {
-    activeNames.value = [activeNames.value[0] === item ? "" : item];
+    _activeNames = [activeNames.value[0] === item ? "" : item];
+    activeNames.value = _activeNames;
   } else {
+    const index = _activeNames.indexOf(item);
     if (index > -1) {
       // 存在，删除数组中对应的一项
-      activeNames.value.splice(index, 1);
+      _activeNames.splice(index, 1);
     } else {
       // 不存在，插入对应的name
-      activeNames.value.push(item);
+      _activeNames.push(item);
     }
+    activeNames.value = _activeNames;
   }
   emits("update:modelValue", activeNames.value);
   emits("change", activeNames.value);
