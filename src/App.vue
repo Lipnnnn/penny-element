@@ -12,6 +12,10 @@ const buttonRef = ref<ButtonInstance>();
 
 const openedValue = ref<NameType[]>(["1"]);
 
+function handleClose() {
+  alert("哈哈哈");
+}
+
 onMounted(() => {
   console.log(buttonRef.value?.ref);
 });
@@ -54,13 +58,12 @@ onMounted(() => {
   <Icon icon="fa-solid fa-house" type="primary" color="black" />
   <Icon icon="fa-solid fa-user-secret" type="danger" />
   <hr />
-  <Alert type="danger" center show-icon />
+  <Alert type="danger" center show-icon :closable="false" />
   <Alert type="primary" show-icon />
   <Alert type="success" show-icon />
   <Alert type="info" show-icon />
-  <Alert content="223" type="warning" show-icon center />
+  <Alert content="223" type="warning" show-icon center @close="handleClose" />
   <hr />
-  
 </template>
 
 <style scoped>

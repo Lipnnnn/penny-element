@@ -1,5 +1,6 @@
 <template>
   <div
+    v-if="show"
     ref="_ref"
     class="vk-alert"
     :class="{
@@ -9,7 +10,7 @@
       'is-center': center,
     }"
   >
-    <div class="flex-1 flex items-center" :class="{'justify-center': center}">
+    <div class="flex-1 flex items-center" :class="{ 'justify-center': center }">
       <Icon v-if="showIcon" :icon="icon" />
       <span>
         <slot>{{ content }}</slot>
@@ -19,12 +20,13 @@
       v-if="closable"
       icon="fa-solid fa-xmark"
       class="cursor-pointer ml-auto"
+      @click="handleClose"
     />
   </div>
 </template>
 
 <script setup lang="ts">
-import { computed } from "vue";
+import { ref, computed } from "vue";
 import type { AlertType } from "./types";
 import Icon from "../Icon/Icon.vue";
 
@@ -45,6 +47,10 @@ const props = withDefaults(
   }
 );
 
+const emits = defineEmits<{
+  close: []
+}>()
+
 const typeArr = ["primary", "success", "info", "warning", "danger"];
 const iconArr = [
   "fa-solid fa-circle-info",
@@ -59,6 +65,12 @@ const icon = computed(() => {
   }
   return "";
 });
+
+const show = ref(true);
+function handleClose() {
+  show.value = false;
+  emits("close");
+}
 </script>
 
 <style scoped></style>
