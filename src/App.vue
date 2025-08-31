@@ -1,5 +1,6 @@
 <script setup lang="ts">
-import Button from "./components/Button/Button.vue";
+// import Button from "./components/Button/Button.vue";
+import Button from '@/components/Button/Button.vue'
 import Collapse from "./components/Collapse/Collapse.vue";
 import CollapseItem from "./components/Collapse/CollapseItem.vue";
 import Alert from "./components/Alert/Alert.vue";
